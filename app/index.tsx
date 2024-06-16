@@ -10,7 +10,7 @@ export default function App() {
     function IrTelaHome() {
       setTimeout(() => {
         router.push('./(stack)')
-      }, 2000);
+      }, 1000);
     }
     IrTelaHome()
   })

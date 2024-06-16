@@ -4,8 +4,8 @@ import { Entypo } from '@expo/vector-icons'
 import { useState } from 'react'
 
 export const InputComponent = ({
-    width, placeholder, color, fontSize = 22,
-    border, onChangeText
+    width, placeholder, color="#000", 
+    fontSize = 22, border, onChangeText
 }: InputInterface) => {
     return (
         <View
@@ -52,10 +52,14 @@ export const PasswordComponent = ({
                     { color: color, fontSize: fontSize }
                 ]}
                 placeholder={placeholder}
+                secureTextEntry={seguranca}
                 onChangeText={onChangeText}
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity
+                style={InputStyles.btnIcone}
+                onPress={VerficiarSenha}
+            >
                 <Entypo name={verSenha} size={35} />
             </TouchableOpacity>
         </View>
@@ -66,6 +70,7 @@ const InputStyles = StyleSheet.create({
     container: {
         height: 50,
         borderRadius: 10,
+        marginVertical: 20,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',

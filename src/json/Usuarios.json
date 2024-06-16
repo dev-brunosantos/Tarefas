@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Bruno",
+        "sobrenome": "Santos",
+        "email": "brunosdesenvolvedor@gmail.com",
+        "senha": "brunosds"
+    },
+    {
+        "nome": "Monica",
+        "sobrenome": "Santos",
+        "email": "monica@gmail.com",
+        "senha": "moni2520"
+    },
+    {
+        "nome": "Sara",
+        "sobrenome": "Santos",
+        "email": "sara@gmail.com",
+        "senha": "sara2520"
+    }
+]
