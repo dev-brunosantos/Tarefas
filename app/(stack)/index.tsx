@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import * as Animatable from 'react-native-animatable';
+import { router } from "expo-router";
 import { InputComponent, PasswordComponent } from "../../src/components/Inputs";
 import { Btn } from "../../src/components/Btn";
 // IMPORTAÇÃO DE ESTILOS
@@ -15,18 +17,21 @@ export default function Login() {
     const [alerta, setAlerta] = useState<boolean>()
 
     const ValidarUsuario = () => {
-        UsuariosDados.map((pessoa: any) => {
-            if (pessoa.nome === usuario && pessoa.senha === senha) {
-                return ( setAlerta(false), alert('Usuário Logado') )
-            }
-            else {
-                setAlerta(true)
-            }
-        })
+        // UsuariosDados.map((pessoa: any) => {
+        //     if (pessoa.nome === usuario && pessoa.senha === senha) {
+        //         return ( setAlerta(false), router.push('../(drawer)/Home') )
+        //     }
+        //     else {
+        //         return (setAlerta(true)) 
+        //     }
+        // })
+        return ( setAlerta(false), router.push('../(drawer)/Home') )
     }
 
     return (
-        <View style={PaginaStyles.pagina}>
+        <Animatable.View style={PaginaStyles.pagina}
+            animation={'fadeIn'} delay={500}
+        >
             <InputComponent
                 width={350}
                 border={1}
@@ -51,9 +56,11 @@ export default function Login() {
 
             {
                 alerta == true ? 
-                <Text style={{ fontSize: 18, fontWeight: "bold" }}>Usuário Inválido</Text> : 
+                <TouchableOpacity onPress={() => router.push('/Cadastro')}>
+                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>Criar conta </Text>
+                </TouchableOpacity> : 
                 <Text></Text>
             }
-        </View>
+        </Animatable.View>
     )
 }

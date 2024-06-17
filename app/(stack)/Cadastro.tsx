@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { View } from "react-native"
+import { router } from "expo-router"
+import * as Animatable from 'react-native-animatable';
 import { InputComponent, PasswordComponent } from "../../src/components/Inputs"
 import { Btn } from "../../src/components/Btn"
 // IMPORTAÇÃO DE ESTILOS
@@ -15,41 +17,34 @@ export default function Cadastro() {
     const [confirmarSenha, setConfirmarSenha] = useState<string>()
 
     const VerificaDados = () => {
-        if(senha !== confirmarSenha) {
-            alert('As senhas não são iguais. Tente novamente.')
+        if (senha !== confirmarSenha) {
+            return alert('As senhas não são iguais. Tente novamente.')
         }
+        return (alert('Usuário cadastrado com sucesso.'), router.back())
     }
 
     return (
-        <View style={PaginaStyles.pagina}>
-            <InputComponent
-                width={380}
-                border={1}
-                placeholder=""
+        <Animatable.View style={PaginaStyles.pagina}
+            animation={'fadeIn'} delay={500}
+        >
+            <InputComponent placeholder="Nome"
+                width={380} border={1}
                 onChangeText={(txt) => setNome(txt)}
             />
-            <InputComponent
-                width={380}
-                border={1}
-                placeholder=""
+            <InputComponent placeholder="Sobrenome"
+                width={380} border={1}
                 onChangeText={(txt) => setSobrenome(txt)}
             />
-            <InputComponent
-                width={380}
-                border={1}
-                placeholder=""
+            <InputComponent placeholder="E-mail"
+                width={380} border={1}
                 onChangeText={(txt) => setEmail(txt)}
             />
-            <PasswordComponent
-                width={380}
-                border={1}
-                placeholder=""
+            <PasswordComponent placeholder="Senha"
+                width={380} border={1}
                 onChangeText={(txt) => setSenha(txt)}
             />
-            <PasswordComponent
-                width={380}
-                border={1}
-                placeholder=""
+            <PasswordComponent placeholder="Confirmar Senha"
+                width={380} border={1}
                 onChangeText={(txt) => setConfirmarSenha(txt)}
             />
 
@@ -57,9 +52,8 @@ export default function Cadastro() {
                 width={175}
                 border={1}
                 titulo="Cadastrar"
-                // onPress={() => alert(usuario)}
                 onPress={VerificaDados}
             />
-        </View>
+        </Animatable.View>
     )
 }
