@@ -3,6 +3,13 @@
 ## CRIAÇÃO
 O App foi desenvolvido com React Native usando o EXPO.
 
+### TECNOLOGIAS
+<div>
+  <img align="center" alt="html" src="https://img.shields.io/badge/React-66dbfb?style=for-the-badge&logo=react&logoColor=000" />
+  <img align="center" alt="html" src="https://img.shields.io/badge/Expo-fff?style=for-the-badge&logo=expo&logoColor=000" />
+  <img align="center" alt="html" src="https://img.shields.io/badge/Typescript-087ece?style=for-the-badge&logo=typescript&logoColor=fff" />
+</div>
+
 ## OBJETIVO
 
 <div>
