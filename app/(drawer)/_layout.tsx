@@ -12,8 +12,14 @@ export default function DrawerLayout() {
                 <>
                     <Cabecalho />
                     <DrawerItemList {...props} />
-                    <TouchableOpacity onPress={() => router.push('../(stack)')}>
-                        <Text>Sair</Text>
+                    <TouchableOpacity 
+                        style={{
+                            position: 'absolute',
+                            bottom: 20
+                        }}
+                        onPress={() => router.push('../(stack)')}
+                    >
+                        <Text style={{fontSize: 20}}>Sair</Text>
                     </TouchableOpacity>
                 </>
             )}
@@ -26,7 +32,14 @@ export default function DrawerLayout() {
             <Drawer.Screen name='Home' 
                 options={{
                     drawerIcon: (({focused}) => (
-                        focused ? <Feather name='home' size={50} /> : <Feather name='home' size={50} />
+                        focused ? <Feather name='home' size={30} /> : <Feather name='home' size={30} />
+                    ))
+                }}
+            />
+            <Drawer.Screen name='Usuario' 
+                options={{
+                    drawerIcon: (({focused}) => (
+                        focused ? <Feather name='user' size={30} /> : <Feather name='user' size={30} />
                     ))
                 }}
             />
