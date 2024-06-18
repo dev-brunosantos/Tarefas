@@ -26,3 +26,8 @@ O App foi desenvolvido com React Native usando o EXPO.
   - Criar tarefas
   - Editar tarefas
   - Excluir tarefas
+* Tela USUARIO </br>
+  - Ver perfil
+  - Editar senha
+  - Editar tarefas
+  - Excluir tarefas
