@@ -13,8 +13,9 @@ export default function Login() {
 
 
     const ValidarUsuario = () => {
-        if (usuario != 'Bruno' && senha != "1234") { return setErro(true) }
-        return setErro(true)
+        // if (usuario != 'Bruno' && senha != "1234") { return setErro(true) }
+        // return setErro(true)
+        router.push('(drawer)/Home')
     }
 
     return (

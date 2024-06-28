@@ -1,15 +1,18 @@
 import { Btn } from "@/src/components/Btn";
-import { InputComponent, PasswordComponent } from "@/src/components/Inputs";
 import { router } from "expo-router";
-import { Alert, Text, View } from "react-native";
+import { View } from "react-native";
+import * as Animacao from 'react-native-animatable';
 
 export default function App() {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Animacao.View 
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+        animation={'zoomIn'} delay={500}
+        >
             <Btn 
                 titulo="Entrar"
                 onPress={() => router.push('(stack)/Login')}
             />
-        </View>
+        </Animacao.View>
     )
 }
