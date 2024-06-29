@@ -3,7 +3,7 @@ import { Cabecalho } from '@/src/components/Cabecalho'
 import { DrawerItemList } from '@react-navigation/drawer'
 import { router } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
-import { View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import { Feather, FontAwesome, Ionicons } from '@expo/vector-icons'
 
 export default function DrawerLayout() {
@@ -11,13 +11,13 @@ export default function DrawerLayout() {
         <Drawer
             screenOptions={{
                 headerLeftContainerStyle: { position: 'absolute', top: 15, right: 5 },
-                drawerLabelStyle: { 
-                    fontSize: 20, fontWeight: 'bold', marginVertical: 0, 
-                    padding: 0, position: 'absolute', top: -14, left: -20 
+                drawerLabelStyle: {
+                    fontSize: 20, fontWeight: 'bold', marginVertical: 0,
+                    padding: 0, position: 'absolute', top: -14, left: -20
                 },
                 drawerActiveBackgroundColor: '#fff',
                 drawerActiveTintColor: '#000', drawerInactiveTintColor: '#0000005a',
-                drawerItemStyle: { height: 55, flexDirection: 'column', marginVertical: 15 }
+                drawerItemStyle: { height: 55, flexDirection: 'column', marginVertical: 15 } 
             }}
             drawerContent={(props) => (
                 <>
@@ -28,6 +28,7 @@ export default function DrawerLayout() {
                     </View>
                 </>
             )}
+
         >
             <Drawer.Screen name='Home'
                 options={{
