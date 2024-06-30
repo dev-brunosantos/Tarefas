@@ -1,4 +1,4 @@
-import { CardTarefas } from "@/src/components/CardTarefas";
+import { CardTarefas } from "@/src/components/cards/CardTarefas";
 import { PaginaStyles } from "@/src/styles/Paginas";
 import { Text, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";

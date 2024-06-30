@@ -1,30 +1,16 @@
 import { StyleSheet, View, TouchableOpacity, Text, Alert } from "react-native"
 import { Entypo } from '@expo/vector-icons'
+import { BtnIcone } from "./BtnIcone"
 
 interface TarefasIterface {
     titulo: string, 
     descricao?: string
 }
-function BtnIcone({ icone, titulo }: { icone: string, titulo: string }) {
-
-    const FinalizarTarefa = () => {
-        if (icone == 'check') {
-            return Alert.alert(`Tarefa: ${titulo} concluída com sucesso`)
-        }
-        return Alert.alert('Tarefa apagada com sucesso')
-    }
-
-    return (
-        <TouchableOpacity onPress={FinalizarTarefa} style={styles.btn}>
-            <Entypo name={icone} size={30} />
-        </TouchableOpacity>
-    )
-}
 
 export const CardTarefas = ({ titulo, descricao }:TarefasIterface) => {
 
     const abrirDescricao = () => {
-        if(descricao == null) {
+        if(descricao == null || descricao == "" || descricao == undefined) {
             return 
         }
         return Alert.alert(`${descricao}`)
@@ -43,13 +29,6 @@ export const CardTarefas = ({ titulo, descricao }:TarefasIterface) => {
 }
 
 const styles = StyleSheet.create({
-    btn: {
-        width: '15%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // backgroundColor: 'red'
-    },
     container: {
         width: '90%',
         height: 54,
@@ -65,7 +44,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 15,
     },
-    txt: {
-        fontSize: 18
-    }
+    txt: { fontSize: 18 }
 })
