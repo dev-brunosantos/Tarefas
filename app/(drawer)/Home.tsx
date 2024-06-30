@@ -1,10 +1,11 @@
 import { CardTarefas } from "@/src/components/cards/CardTarefas";
 import { PaginaStyles } from "@/src/styles/Paginas";
-import { Text, View } from "react-native";
+import { useContext, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 export default function Home() {
-    
+
     const tarefas = [
         {
             nome: "Criar tela de Login",
@@ -20,13 +21,15 @@ export default function Home() {
         }
     ]
 
-    return(
+    const [userNome, setUserNome] = useState()
+
+    return (
         <View style={PaginaStyles.pagina}>
             <FlatList
-                style={{width: '100%'}} 
-                data={tarefas} 
-                renderItem={({item}) => (
-                    <View style={{marginVertical: 20, width: '110%'}} >
+                style={{ width: '100%' }}
+                data={tarefas}
+                renderItem={({ item }) => (
+                    <View style={{ marginVertical: 20, width: '110%' }} >
                         <CardTarefas titulo={item.nome} descricao={item.descricao} />
                     </View>
                 )}

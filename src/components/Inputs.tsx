@@ -4,16 +4,18 @@ import { Entypo } from '@expo/vector-icons';
 
 interface InputInterface {
     width?: number,
-    placeholder: string
+    placeholder: string,
+    onChangeText: (txt:string) => void
 }
 
-export const InputComponent = ({ width = 350, placeholder }: InputInterface) => {
+export const InputComponent = ({ width = 350, placeholder, onChangeText }: InputInterface) => {
 
     return (
         <View style={styles.container}>
             <TextInput
                 placeholder={placeholder}
                 style={[styles.input, { width: width }]}
+                onChangeText={onChangeText}
             />
         </View>
     )
