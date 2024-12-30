@@ -9,7 +9,7 @@ interface InputProps extends TextInputProps {
 export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
 
     const [icone, setIcone] = useState('eye-with-line')
-    const [seguranca, setSeguranca] = useState(false)
+    const [seguranca, setSeguranca] = useState(true)
 
     const verificarSenha = () => {
         setSeguranca(!seguranca)
@@ -19,7 +19,11 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
     if (isPassword) {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.input} {...rest} />
+                <TextInput 
+                    style={styles.input} 
+                    {...rest} 
+                    secureTextEntry={seguranca}
+                />
 
                 <TouchableOpacity style={styles.btnIcone} onPress={verificarSenha}>
                     <Entypo name={icone} size={35} />
