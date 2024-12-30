@@ -4,6 +4,8 @@ import { PagesStyles } from "@/styles/PageStyles";
 import { View, Text, TouchableOpacity, ScrollView, TextInput } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
+import { api } from "../../config/axios";
+import { useApiContext } from "@/contexts/ApiContext";
 
 // const tarefasDoDia:string[] = [
 //     // "Acordar e fazer a cama",
@@ -21,15 +23,31 @@ import { useEffect, useState } from "react";
 //     // "Preparar para dormir"
 // ];
 
+interface Teste {
+    id: string;
+    tarefa: string;
+    dtCriacao: Date;
+    dtAtualizacao: Date;
+}
+
 export default function Tarefas() {
+
+    const { tarefas, cadastrar, listar } = useApiContext()
 
     const [tarefasDoDia, setTarefasDoDia] = useState<string[]>([]);
     const [tarefa, setTarefa] = useState('');
+    // const [tarefas, setTarefas] = useState<Teste[]>([]);
 
-    const addNovaTarefa = () => {
-        setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
-        setTarefa('');
+    const addNovaTarefa = async () => {
+        // setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
+        // setTarefa('');
+
+        await cadastrar(tarefa)
     }
+
+    useEffect(() => {
+        listar()
+    }, [])
 
     return (
         <View style={PagesStyles.page}>
@@ -39,8 +57,8 @@ export default function Tarefas() {
                 </Text>
             </Container>
 
-            <Container style={{ flexDirection: 'row', paddingHorizontal: 20}}>
-                <TextInput 
+            <Container style={{ flexDirection: 'row', paddingHorizontal: 20 }}>
+                <TextInput
                     style={{ width: '95%', height: '100%' }}
                     onChangeText={setTarefa}
                 />
@@ -51,10 +69,18 @@ export default function Tarefas() {
             </Container>
 
             <ScrollView>
-                {tarefasDoDia.map(task => (
+                {/* {tarefasDoDia.map(task => (
                     <CardTask
                         key={task}
                         tarefa={task}
+                    />
+                ))} */}
+                {tarefas.map(task => (
+                    <CardTask 
+                        key={task.id}
+                        tarefa={task.tarefa}
+                        editar={() => alert(`${task.dtCriacao}`)}
+                        finalizar={() => alert(`${task.id}`)}
                     />
                 ))}
             </ScrollView>

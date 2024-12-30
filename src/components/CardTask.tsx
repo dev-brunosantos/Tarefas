@@ -4,9 +4,11 @@ import { Container } from "./Container";
 
 interface TaskProps {
     tarefa: string;
+    finalizar: () => void;
+    editar: () => void;
 }
 
-export const CardTask = ({ tarefa }: TaskProps) => {
+export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
     return (
         <Container style={{ flexDirection: 'row'}}>
             <View style={styles.content_txt} >
@@ -16,11 +18,11 @@ export const CardTask = ({ tarefa }: TaskProps) => {
             </View>
 
             <View style={styles.content_btn}>
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={editar}>
                     <Entypo name="pencil" size={35} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={finalizar}>
                     <Entypo name="check" size={35} />
                 </TouchableOpacity>
             </View>
