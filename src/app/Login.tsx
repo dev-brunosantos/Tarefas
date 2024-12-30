@@ -1,7 +1,7 @@
-import { BtnComponent } from "@/components/BtnComponent";
-import { InputComponent } from "@/components/InputComponents";
 import { useState } from "react";
 import { View, Text } from "react-native";
+import { BtnComponent } from "@/components/BtnComponent";
+import { InputComponent } from "@/components/InputComponents";
 
 export default function Login() {
 
