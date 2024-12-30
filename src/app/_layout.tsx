@@ -1,7 +1,10 @@
+import { LoginContextProvider } from '@/contexts/LoginContext';
 import { Stack } from 'expo-router';
 
 export default function AppLayout() {
-    return(
-        <Stack />
+    return (
+        <LoginContextProvider>
+            <Stack />
+        </LoginContextProvider>
     )
 }
