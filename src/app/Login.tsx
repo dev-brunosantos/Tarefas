@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text } from "react-native";
 import { BtnComponent } from "@/components/BtnComponent";
 import { InputComponent } from "@/components/InputComponents";
-import { useLogin } from "@/contexts/LoginContext";
+import { useLogin } from "@/hooks/useLogin";
 
 export default function Login() {
 
