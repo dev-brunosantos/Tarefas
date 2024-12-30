@@ -46,10 +46,6 @@ const LoginContextProvider = ({ children }: LoginContextProps) => {
     )
 }
 
-const useLogin = () => {
-    const contexto = useContext(LoginContext)
-    if(!contexto) throw new Error("Não existe nenhum contexto de LOGIN")
-    return contexto
-}
 
-export { LoginContext, LoginContextProvider, useLogin }
+
+export { LoginContext, LoginContextProvider }
