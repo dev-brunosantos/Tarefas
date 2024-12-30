@@ -16,7 +16,6 @@ const LoginContextProvider = ({ children }: LoginContextProps) => {
 
     const [erro, setErro] = useState(false)
 
-
     const signIn = (email: string, senha: string) => {
         if (email.trim() === "" || senha.trim() === "") {
             setErro(true)
