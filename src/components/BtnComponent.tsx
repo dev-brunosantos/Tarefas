@@ -1,4 +1,5 @@
 import { StyleSheet, TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
+import { Container } from "./Container";
 
 interface BtnProps extends TouchableOpacityProps {
     titulo: string;
@@ -6,25 +7,25 @@ interface BtnProps extends TouchableOpacityProps {
 
 export const BtnComponent = ({ titulo, ...rest }: BtnProps) => {
     return (
-        <TouchableOpacity style={styles.btn} {...rest}>
-            <Text style={styles.txt}>
-                {titulo}
-            </Text>
-        </TouchableOpacity>
+        <Container>
+            <TouchableOpacity style={styles.btn} {...rest}>
+                <Text style={styles.txt}>
+                    {titulo}
+                </Text>
+            </TouchableOpacity>
+        </Container>
     )
 }
 
 const styles = StyleSheet.create({
     btn: {
         width: '100%',
-        height: 52, 
-        borderWidth: 1,
-        borderRadius: 10, 
-        alignItems: 'center',
+        height: '100%',
+        textAlign: 'center',
         justifyContent: 'center'
     },
     txt: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center'
     }
