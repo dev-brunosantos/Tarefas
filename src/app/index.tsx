@@ -1,6 +1,6 @@
-import { router } from "expo-router";
 import { useEffect } from "react";
 import { View, Text } from "react-native";
+import { router } from "expo-router";
 
 export default function App() {
 
