@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, TextInput, TouchableOpacity, TextInputProps, StyleSheet } from "react-native";
 import { Entypo } from '@expo/vector-icons';
+import { Container } from "./Container";
 
 interface InputProps extends TextInputProps {
     isPassword: boolean;
@@ -18,24 +19,39 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
 
     if (isPassword) {
         return (
-            <View style={styles.container}>
-                <TextInput 
-                    style={styles.input} 
-                    {...rest} 
+            <Container>
+                <TextInput
+                    style={styles.input}
+                    {...rest}
                     secureTextEntry={seguranca}
                 />
 
                 <TouchableOpacity style={styles.btnIcone} onPress={verificarSenha}>
                     <Entypo name={icone} size={35} />
                 </TouchableOpacity>
-            </View>
+            </Container>
+
+            // <View style={styles.container}>
+            //     <TextInput 
+            //         style={styles.input} 
+            //         {...rest} 
+            //         secureTextEntry={seguranca}
+            //     />
+
+            //     <TouchableOpacity style={styles.btnIcone} onPress={verificarSenha}>
+            //         <Entypo name={icone} size={35} />
+            //     </TouchableOpacity>
+            // </View>
         )
     }
 
     return (
-        <View style={styles.container}>
+        <Container>
             <TextInput style={styles.input} {...rest} />
-        </View>
+        </Container>
+        // <View style={styles.container}>
+        //     <TextInput style={styles.input} {...rest} />
+        // </View>
     )
 }
 
