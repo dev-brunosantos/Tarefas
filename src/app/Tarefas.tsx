@@ -33,7 +33,7 @@ export default function Tarefas() {
 
     return (
         <View style={PagesStyles.page}>
-            <Container>
+            <Container style={{ height: 100, borderWidth: 0 }}>
                 <Text style={{ fontSize: 45 }}>
                     Minhas Tarefas
                 </Text>
