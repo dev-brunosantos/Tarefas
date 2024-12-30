@@ -30,18 +30,6 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
                     <Entypo name={icone} size={35} />
                 </TouchableOpacity>
             </Container>
-
-            // <View style={styles.container}>
-            //     <TextInput 
-            //         style={styles.input} 
-            //         {...rest} 
-            //         secureTextEntry={seguranca}
-            //     />
-
-            //     <TouchableOpacity style={styles.btnIcone} onPress={verificarSenha}>
-            //         <Entypo name={icone} size={35} />
-            //     </TouchableOpacity>
-            // </View>
         )
     }
 
@@ -49,9 +37,6 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
         <Container>
             <TextInput style={styles.input} {...rest} />
         </Container>
-        // <View style={styles.container}>
-        //     <TextInput style={styles.input} {...rest} />
-        // </View>
     )
 }
 
