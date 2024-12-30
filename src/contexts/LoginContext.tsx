@@ -1,19 +1,9 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { Alert } from "react-native";
+import { LoginProps, UsuarioLogin } from "@/interfaces/ILogin";
 
 interface LoginContextProps {
     children: ReactNode
-}
-
-interface UsuarioLogin {
-    email: string;
-    senha: string;
-}
-
-interface LoginProps {
-    usuario: UsuarioLogin;
-    erro: boolean;
-    signIn: (email: string, senha: string) => void;
 }
 
 const LoginContext = createContext<LoginProps | null>(null)
