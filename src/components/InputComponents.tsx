@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { View, TextInput, TouchableOpacity, TextInputProps, StyleSheet } from "react-native";
 import { Entypo } from '@expo/vector-icons';
-import { useState } from "react";
 
 interface InputProps extends TextInputProps {
     isPassword: boolean;
