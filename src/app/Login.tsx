@@ -39,27 +39,6 @@ export default function Login() {
                 />
             </Container>
 
-            {/* <View>
-                <InputComponent
-                    isPassword={false}
-                    placeholder="Digite seu e-mail"
-                    onChangeText={setEmail}
-                />
-
-                <InputComponent
-                    isPassword={true}
-                    placeholder="Digite sua senha"
-                    onChangeText={setSenha}
-                />
-            </View> */}
-
-            {/* <View>
-                <BtnComponent
-                    titulo="Entrar"
-                    onPress={realizarLogin}
-                />
-            </View> */}
-
             <Container style={{ height: 100, borderWidth: 0 }}>
                 <BtnComponent
                     titulo="Entrar"
@@ -72,12 +51,6 @@ export default function Login() {
                     <Text style={{ textAlign: 'center'}}>Não possui conta? Cadastre-se aqui</Text>
                 </TouchableOpacity>
             )}
-
-            {/* <View>
-                {erro && (
-                    <Text>Não possui conta? Cadastre-se aqui</Text>
-                )}
-            </View> */}
         </View>
     )
 }
