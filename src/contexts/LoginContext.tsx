@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 import { Alert } from "react-native";
 import { LoginProps, UsuarioLogin } from "@/interfaces/ILogin";
+import { router } from "expo-router";
 
 interface LoginContextProps {
     children: ReactNode
@@ -25,7 +26,7 @@ const LoginContextProvider = ({ children }: LoginContextProps) => {
         setErro(false)
         setUsuario({ email, senha })
         
-        return Alert.alert(`${email} -- ${senha}`)
+        return router.push('/Tarefas')
     }
 
     return (
