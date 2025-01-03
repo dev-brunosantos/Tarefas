@@ -24,7 +24,7 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
         return (
             <Container style={{ borderColor: tema.txt }}>
                 <TextInput
-                    style={styles.input}
+                    style={[styles.input, { color: tema.txt}]}
                     {...rest}
                     secureTextEntry={seguranca}
                     placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
@@ -40,7 +40,7 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
     return (
         <Container style={{ borderColor: tema.txt }}>
             <TextInput
-                style={styles.input} {...rest}
+                style={[styles.input, { color: tema.txt}]} {...rest}
                 placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
             />
         </Container>
