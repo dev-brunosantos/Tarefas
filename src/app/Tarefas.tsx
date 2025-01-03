@@ -7,47 +7,15 @@ import { useEffect, useState } from "react";
 import { api } from "../../config/axios";
 import { useApiContext } from "@/contexts/ApiContext";
 
-// const tarefasDoDia:string[] = [
-//     // "Acordar e fazer a cama",
-//     // "Tomar café da manhã",
-//     // "Fazer exercícios físicos",
-//     // "Trabalhar/estudar",
-//     // "Almoçar",
-//     // "Responder e-mails",
-//     // "Realizar tarefas domésticas",
-//     // "Ler um livro ou artigo",
-//     // "Fazer uma pausa para o café",
-//     // "Jantar",
-//     // "Passar tempo com a família/amigos",
-//     // "Revisar o que foi feito no dia",
-//     // "Preparar para dormir"
-// ];
-
-interface Teste {
-    id: string;
-    tarefa: string;
-    dtCriacao: Date;
-    dtAtualizacao: Date;
-}
-
 export default function Tarefas() {
 
-    // const { tarefas, cadastrar, listar } = useApiContext()
-
-    const [tarefasDoDia, setTarefasDoDia] = useState<string[]>(['asdasd']);
+    const [tarefasDoDia, setTarefasDoDia] = useState<string[]>([]);
     const [tarefa, setTarefa] = useState('');
-    const [tarefas, setTarefas] = useState<Teste[]>([]);
 
     const addNovaTarefa = () => {
         setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
         setTarefa('');
-
-        // await cadastrar(tarefa)
     }
-
-    // useEffect(() => {
-    //     listar()
-    // }, [])
 
     return (
         <View style={PagesStyles.page}>
@@ -77,14 +45,6 @@ export default function Tarefas() {
                         finalizar={() => alert('finalizar')}
                     />
                 ))}
-                {/* {tarefas.map(task => (
-                    <CardTask 
-                        key={task.id}
-                        tarefa={task.tarefa}
-                        editar={() => alert(`${task.dtCriacao}`)}
-                        finalizar={() => alert(`${task.id}`)}
-                    />
-                ))} */}
             </ScrollView>
 
         </View>
