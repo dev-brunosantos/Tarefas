@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "build:android": "eas build --platform android"
+    "build:android": "eas build -p android --profile preview"
   },
   "jest": {
     "preset": "jest-expo"
