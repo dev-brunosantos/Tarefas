@@ -7,6 +7,8 @@ import { PagesStyles } from "@/styles/PageStyles";
 import { Container } from "@/components/Container";
 import { router } from "expo-router";
 import { useTema } from "@/hooks/useTema";
+import { Cores } from "@/styles/Cores";
+
 export default function Login() {
 
     const { tema } = useTema()
@@ -59,6 +61,7 @@ export default function Login() {
                 <BtnComponent
                     titulo="Cadastrar"
                     onPress={cadastrar}
+                    style={{ width: '100%', backgroundColor: Cores.confirmar }}
                 />
             </Container>
 

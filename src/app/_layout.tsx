@@ -1,5 +1,5 @@
-import { AppContexts } from '@/contexts/AppContext';
 import { Stack } from 'expo-router';
+import { AppContexts } from '@/contexts/AppContext';
 
 export default function AppLayout() {
     return (
