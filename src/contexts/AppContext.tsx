@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import { LoginContextProvider } from "./LoginContext";
 import { ApiContextProvider } from "./ApiContext";
+import { TemaContextProvider } from "./TemaContext";
 
 interface AppContextProps {
     children: ReactNode;
@@ -8,10 +9,12 @@ interface AppContextProps {
 
 export const AppContexts = ({ children }: AppContextProps) => {
     return (
-        <LoginContextProvider>
-            <ApiContextProvider>
-                {children}
-            </ApiContextProvider>
-        </LoginContextProvider>
+        <TemaContextProvider>
+            <LoginContextProvider>
+                <ApiContextProvider>
+                    {children}
+                </ApiContextProvider>
+            </LoginContextProvider>
+        </TemaContextProvider>
     )
 }
