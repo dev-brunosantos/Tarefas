@@ -5,8 +5,13 @@ import { InputComponent } from "@/components/InputComponents";
 import { useLogin } from "@/hooks/useLogin";
 import { PagesStyles } from "@/styles/PageStyles";
 import { Container } from "@/components/Container";
+import * as Animacao from 'react-native-animatable';
+import { useTema } from "@/hooks/useTema";
+import { router } from "expo-router";
 
-export default function Login() {
+export default function NovoUsuario() {
+
+    const { tema } = useTema()
 
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -18,9 +23,11 @@ export default function Login() {
     }
 
     return (
-        <View style={PagesStyles.page}>
+        <View style={[PagesStyles.page, { backgroundColor: tema.background }]}>
             <Container style={{ height: 200, borderWidth: 0 }}>
-                <Text style={{ fontSize: 45, fontWeight: 'bold' }}>
+                <Text 
+                    style={{ fontSize: 45, fontWeight: 'bold', color: tema.txt }}
+                >
                     Seja bem vindo
                 </Text>
             </Container>
@@ -47,8 +54,8 @@ export default function Login() {
             </Container>
 
             {erro && (
-                <TouchableOpacity>
-                    <Text style={{ textAlign: 'center'}}>Não possui conta? Cadastre-se aqui</Text>
+                <TouchableOpacity onPress={() => router.push('/NovoUsuario')}>
+                    <Text style={{ textAlign: 'center', color: tema.txt }}>Não possui conta? Cadastre-se aqui</Text>
                 </TouchableOpacity>
             )}
         </View>
