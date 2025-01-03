@@ -6,7 +6,8 @@ export default function AppLayout() {
         <AppContexts>
             <Stack screenOptions={{
                 statusBarStyle: "auto",
-                statusBarBackgroundColor: "#242424"
+                statusBarBackgroundColor: "#242424",
+                headerShown: false,
             }} />
         </AppContexts>
     )
