@@ -2,12 +2,15 @@ import { useState } from "react";
 import { View, TextInput, TouchableOpacity, TextInputProps, StyleSheet } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { Container } from "./Container";
+import { useTema } from "@/hooks/useTema";
 
 interface InputProps extends TextInputProps {
     isPassword: boolean;
 }
 
 export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
+
+    const { tema } = useTema()
 
     const [icone, setIcone] = useState('eye-with-line')
     const [seguranca, setSeguranca] = useState(true)
@@ -19,23 +22,27 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
 
     if (isPassword) {
         return (
-            <Container>
+            <Container style={{ borderColor: tema.txt }}>
                 <TextInput
                     style={styles.input}
                     {...rest}
                     secureTextEntry={seguranca}
+                    placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
                 />
 
                 <TouchableOpacity style={styles.btnIcone} onPress={verificarSenha}>
-                    <Entypo name={icone} size={35} />
+                    <Entypo name={icone} size={35} color={tema.txt} />
                 </TouchableOpacity>
             </Container>
         )
     }
 
     return (
-        <Container>
-            <TextInput style={styles.input} {...rest} />
+        <Container style={{ borderColor: tema.txt }}>
+            <TextInput
+                style={styles.input} {...rest}
+                placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
+            />
         </Container>
     )
 }
