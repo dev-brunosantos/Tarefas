@@ -32,22 +32,22 @@ interface Teste {
 
 export default function Tarefas() {
 
-    const { tarefas, cadastrar, listar } = useApiContext()
+    // const { tarefas, cadastrar, listar } = useApiContext()
 
     const [tarefasDoDia, setTarefasDoDia] = useState<string[]>([]);
     const [tarefa, setTarefa] = useState('');
-    // const [tarefas, setTarefas] = useState<Teste[]>([]);
+    const [tarefas, setTarefas] = useState<Teste[]>([]);
 
     const addNovaTarefa = async () => {
-        // setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
-        // setTarefa('');
+        setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
+        setTarefa('');
 
-        await cadastrar(tarefa)
+        // await cadastrar(tarefa)
     }
 
-    useEffect(() => {
-        listar()
-    }, [])
+    // useEffect(() => {
+    //     listar()
+    // }, [])
 
     return (
         <View style={PagesStyles.page}>
@@ -69,20 +69,22 @@ export default function Tarefas() {
             </Container>
 
             <ScrollView>
-                {/* {tarefasDoDia.map(task => (
+                {tarefasDoDia.map(task => (
                     <CardTask
                         key={task}
+                        editar={() => alert('editar')}
                         tarefa={task}
+                        finalizar={() => alert('finalizar')}
                     />
-                ))} */}
-                {tarefas.map(task => (
+                ))}
+                {/* {tarefas.map(task => (
                     <CardTask 
                         key={task.id}
                         tarefa={task.tarefa}
                         editar={() => alert(`${task.dtCriacao}`)}
                         finalizar={() => alert(`${task.id}`)}
                     />
-                ))}
+                ))} */}
             </ScrollView>
 
         </View>
