@@ -1,15 +1,19 @@
 import { StyleSheet, TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
 import { Container } from "./Container";
+import { useTema } from "@/hooks/useTema";
 
 interface BtnProps extends TouchableOpacityProps {
     titulo: string;
 }
 
 export const BtnComponent = ({ titulo, ...rest }: BtnProps) => {
+
+    const { tema } = useTema()
+
     return (
-        <Container>
+        <Container style={{ borderColor: tema.txt }}>
             <TouchableOpacity style={styles.btn} {...rest}>
-                <Text style={styles.txt}>
+                <Text style={[styles.txt, { color: tema.txt }]}>
                     {titulo}
                 </Text>
             </TouchableOpacity>
