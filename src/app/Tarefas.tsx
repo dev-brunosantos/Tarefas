@@ -34,11 +34,11 @@ export default function Tarefas() {
 
     // const { tarefas, cadastrar, listar } = useApiContext()
 
-    const [tarefasDoDia, setTarefasDoDia] = useState<string[]>([]);
+    const [tarefasDoDia, setTarefasDoDia] = useState<string[]>(['asdasd']);
     const [tarefa, setTarefa] = useState('');
     const [tarefas, setTarefas] = useState<Teste[]>([]);
 
-    const addNovaTarefa = async () => {
+    const addNovaTarefa = () => {
         setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
         setTarefa('');
 
