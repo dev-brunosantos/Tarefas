@@ -5,6 +5,7 @@ import { useTema } from "@/hooks/useTema";
 import { ModalCardTask } from "./Modal/ModalCardTask";
 import { useState } from "react";
 import { Cores } from "@/styles/Cores";
+import { ModalFormTask } from "./Modal/ModalFormTask";
 
 interface TaskProps {
     tarefa: string;
@@ -19,16 +20,23 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
     const [abrir, setAbrir] = useState(false)
     const [finalizada, setFinalizada] = useState(false)
 
+    const [atualizar, setAtualizar] = useState(false)
+
     const teste = () => {
         setAbrir(true)
     }
 
     const fechar = () => {
         setAbrir(false)
+        setAtualizar(false)
     }
 
     const consluirTarefa = () => {
         setFinalizada(!finalizada)
+    }
+
+    const atualizarTarefa = () => {
+        setAtualizar(true)
     }
 
     return (
@@ -47,7 +55,8 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
             </TouchableOpacity>
 
             <View style={styles.content_btn}>
-                <TouchableOpacity style={styles.btn} onPress={editar}>
+                {/* <TouchableOpacity style={styles.btn} onPress={editar}> */}
+                <TouchableOpacity style={styles.btn} onPress={atualizarTarefa}>
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
 
@@ -62,6 +71,11 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
                 close={fechar}
                 tarefaTitulo={tarefa}
                 status={finalizada ? 'Concluída' : 'Pendente'}
+            />
+
+            <ModalFormTask 
+                open={atualizar}
+                close={fechar}
             />
         </Container>
     )
