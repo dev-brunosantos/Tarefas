@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { Container } from "./Container";
 import { useTema } from "@/hooks/useTema";
+import { ModalCardTask } from "./ModalCardTask";
+import { useState } from "react";
 
 interface TaskProps {
     tarefa: string;
@@ -13,23 +15,40 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
 
     const { tema } = useTema()
 
+    const [abrir, setAbrir] = useState(false)
+
+    const teste = () => {
+        setAbrir(true)
+    }
+
+    const fechar = () => {
+        setAbrir(false)
+    }
+
     return (
         <Container style={{ flexDirection: 'row', backgroundColor: tema.txt }}>
-            <View style={styles.content_txt} >
-                <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
-                    {tarefa}
-                </Text>
-            </View>
+            <TouchableOpacity onPress={teste}>
+                <View style={styles.content_txt} >
+                    <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
+                        {tarefa}
+                    </Text>
+                </View>
 
-            <View style={styles.content_btn}>
-                <TouchableOpacity style={styles.btn} onPress={editar}>
-                    <Entypo name="pencil" size={35} color={tema.background} />
-                </TouchableOpacity>
+                <View style={styles.content_btn}>
+                    <TouchableOpacity style={styles.btn} onPress={editar}>
+                        <Entypo name="pencil" size={35} color={tema.background} />
+                    </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={finalizar}>
-                    <Entypo name="check" size={35} color={tema.background} />
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity style={styles.btn} onPress={finalizar}>
+                        <Entypo name="check" size={35} color={tema.background} />
+                    </TouchableOpacity>
+                </View>
+            </TouchableOpacity>
+
+            <ModalCardTask
+                isOpen={abrir}
+                close={fechar}
+            />
         </Container>
     )
 }
