@@ -1,7 +1,7 @@
 import { CardTask } from "@/components/CardTask";
 import { Container } from "@/components/Container";
 import { PagesStyles } from "@/styles/PageStyles";
-import { View, Text, TouchableOpacity, ScrollView, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, TextInput, Alert } from "react-native";
 import { Entypo, Feather } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
 import { api } from "../../config/axios";
@@ -17,6 +17,9 @@ export default function Tarefas() {
     const [tarefasFiltradas, setTarefasFiltradas] = useState<string[]>([]);
 
     const addNovaTarefa = () => {
+        if(tarefa.trim() === "") {
+            return alert("O formulário esta vazio. Preencha o campo para adicionar a nova tarefa.")
+        }
         setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
         setTarefa('');
     }
