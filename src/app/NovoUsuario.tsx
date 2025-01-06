@@ -2,7 +2,6 @@ import { useState } from "react";
 import { View, Text, Alert } from "react-native";
 import { BtnComponent } from "@/components/BtnComponent";
 import { InputComponent } from "@/components/InputComponents";
-import { useLogin } from "@/hooks/useLogin";
 import { PagesStyles } from "@/styles/PageStyles";
 import { Container } from "@/components/Container";
 import { router } from "expo-router";

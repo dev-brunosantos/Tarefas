@@ -3,40 +3,37 @@ import { Entypo } from '@expo/vector-icons';
 import { Container } from "./Container";
 import { useTema } from "@/hooks/useTema";
 import { ModalCardTask } from "./Modal/ModalCardTask";
-import { useState } from "react";
 import { Cores } from "@/styles/Cores";
 import { ModalFormTask } from "./Modal/ModalFormTask";
+import { useState } from "react";
 
 interface TaskProps {
     tarefa: string;
-    finalizar: () => void;
-    editar: () => void;
+    excluir: (tarefa: string) => void;
 }
 
-export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
-
+export const CardTask = ({ tarefa, excluir }: TaskProps) => {
     const { tema } = useTema()
 
     const [abrir, setAbrir] = useState(false)
+    const [atualizar, setAtualizar] = useState(false)
     const [finalizada, setFinalizada] = useState(false)
 
-    const [atualizar, setAtualizar] = useState(false)
-
-    const teste = () => {
+    const abrirModal = () => {
         setAbrir(true)
     }
 
-    const fechar = () => {
-        setAbrir(false)
-        setAtualizar(false)
+    const atualizarTarefa = () => {
+        setAtualizar(!atualizar)
     }
 
-    const consluirTarefa = () => {
+    const finalizarTarefa = () => {
         setFinalizada(!finalizada)
     }
 
-    const atualizarTarefa = () => {
-        setAtualizar(true)
+    const fecharModal = () => {
+        setAbrir(false)
+        setAtualizar(false)
     }
 
     return (
@@ -46,7 +43,11 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
             backgroundColor: finalizada ? Cores.confirmar : tema.txt,
             position: 'relative'
         }}>
-            <TouchableOpacity style={{ flex: 1 }} onPress={teste} onLongPress={consluirTarefa}>
+            <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={abrirModal}
+                onLongPress={finalizarTarefa}
+            >
                 <View style={styles.content_txt} >
                     <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
                         {tarefa}
@@ -55,27 +56,26 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
             </TouchableOpacity>
 
             <View style={styles.content_btn}>
-                {/* <TouchableOpacity style={styles.btn} onPress={editar}> */}
                 <TouchableOpacity style={styles.btn} onPress={atualizarTarefa}>
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={finalizar}>
-                    <Entypo name="check" size={35} color={tema.background} />
+                <TouchableOpacity style={styles.btn} onPress={() => excluir(tarefa)}>
+                    <Entypo name="trash" size={35} color={tema.background} />
                 </TouchableOpacity>
             </View>
 
             <ModalCardTask
                 key={tarefa}
                 isOpen={abrir}
-                close={fechar}
+                close={fecharModal}
                 tarefaTitulo={tarefa}
                 status={finalizada ? 'Concluída' : 'Pendente'}
             />
 
-            <ModalFormTask 
+            <ModalFormTask
                 open={atualizar}
-                close={fechar}
+                close={fecharModal}
             />
         </Container>
     )

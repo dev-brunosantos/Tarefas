@@ -1,6 +1,6 @@
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import { Cores } from "@/styles/Cores";
+import { ModalStyles } from "@/styles/ModalStyles";
 
 interface ModalCardProps {
     tarefaTitulo: string;
@@ -39,17 +39,17 @@ export const ModalCardTask = ({ tarefaTitulo, status, isOpen, close }: ModalCard
                 backgroundColor: 'red'
             }}
         >
-            <View style={styles.overlay}>
-                <View style={styles.container}>
+            <View style={ModalStyles.overlay}>
+                <View style={ModalStyles.container}>
                     {tarefa.map(task => (
                         <View key={task.titulo}>
-                            <Text style={styles.txt}>{task.titulo}</Text>
-                            <Text style={styles.txt}>{task.status}</Text>
-                            <Text style={styles.txt}>{task.criacao}</Text>
+                            <Text style={ModalStyles.txt}>{task.titulo}</Text>
+                            <Text style={ModalStyles.txt}>{task.status}</Text>
+                            <Text style={ModalStyles.txt}>{task.criacao}</Text>
                         </View>
                     ))}
 
-                    <TouchableOpacity style={styles.btn} onPress={close}>
+                    <TouchableOpacity style={ModalStyles.btn} onPress={close}>
                         <AntDesign name="close" size={35} />
                     </TouchableOpacity>
                 </View>
@@ -58,35 +58,3 @@ export const ModalCardTask = ({ tarefaTitulo, status, isOpen, close }: ModalCard
 
     )
 }
-
-const styles = StyleSheet.create({
-    overlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    container: {
-        width: '80%',
-        height: 250,
-        borderWidth: 2,
-        borderColor: '#000',
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        backgroundColor: Cores.claro,
-        position: 'absolute',
-        left: '10%',
-        top: '35%'
-    },
-    txt: {
-        fontSize: 16,
-        marginVertical: 10,
-    },
-    btn: {
-        padding: 5,
-        position: 'absolute',
-        top: 0,
-        right: 10
-    }
-})

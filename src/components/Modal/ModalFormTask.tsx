@@ -1,11 +1,11 @@
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import { Cores } from "@/styles/Cores";
 import { Container } from "../Container";
 import { InputComponent } from "../InputComponents";
 import { useState } from "react";
 import { useTema } from "@/hooks/useTema";
 import { BtnComponent } from "../BtnComponent";
+import { ModalStyles } from "@/styles/ModalStyles";
 
 interface ModalCardProps {
     open: boolean;
@@ -27,8 +27,8 @@ export const ModalFormTask = ({ open, close }: ModalCardProps) => {
         <Modal
             visible={open}
         >
-            <View style={styles.overlay}>
-                <View style={styles.container}>
+            <View style={ModalStyles.overlay}>
+                <View style={ModalStyles.container}>
                     <Container style={{ width: '90%', borderWidth: 0 }}>
                         <Text style={{ fontSize: 20, fontWeight: 'bold'}}>
                             Atualizar Tarefa
@@ -41,13 +41,6 @@ export const ModalFormTask = ({ open, close }: ModalCardProps) => {
                             placeholder="Atualize o nome da tarefa"
                             placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
                             onChangeText={setNomeTarefa}
-                        // style={{
-                        //     width: '90%',
-                        //     height: '100%',
-                        //     fontSize: 16,
-                        //     fontWeight: 'bold',
-                        //     color: tema.background
-                        // }}
                         />
                     </Container>
 
@@ -57,7 +50,7 @@ export const ModalFormTask = ({ open, close }: ModalCardProps) => {
                         />
                     </Container>
 
-                    <TouchableOpacity style={styles.btn} onPress={close}>
+                    <TouchableOpacity style={ModalStyles.btn} onPress={close}>
                         <AntDesign name="close" size={35} />
                     </TouchableOpacity>
                 </View>
@@ -66,35 +59,3 @@ export const ModalFormTask = ({ open, close }: ModalCardProps) => {
 
     )
 }
-
-const styles = StyleSheet.create({
-    overlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    container: {
-        width: '80%',
-        height: 250,
-        borderWidth: 2,
-        borderColor: '#000',
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        backgroundColor: Cores.claro,
-        position: 'absolute',
-        left: '10%',
-        top: '35%'
-    },
-    txt: {
-        fontSize: 16,
-        marginVertical: 10,
-    },
-    btn: {
-        padding: 5,
-        position: 'absolute',
-        top: 0,
-        right: 10
-    }
-})

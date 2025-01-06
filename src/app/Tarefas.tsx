@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../config/axios";
 import { useApiContext } from "@/contexts/ApiContext";
 import { useTema } from "@/hooks/useTema";
+import { useModalContext } from "@/hooks/useModalContext";
 
 export default function Tarefas() {
 
@@ -22,6 +23,10 @@ export default function Tarefas() {
         }
         setTarefasDoDia((prevTarefas) => [...prevTarefas, tarefa]);
         setTarefa('');
+    }
+
+    const removerTarefa = (inforTarefa: string) => {
+        setTarefasDoDia((prevTarefas) => prevTarefas.filter(task => task !== inforTarefa))
     }
 
     const filtrarTarefa = () => {
@@ -49,7 +54,7 @@ export default function Tarefas() {
                     placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
                 />
 
-                <TouchableOpacity onPress={() => filtrarTarefa()}>
+                <TouchableOpacity onPress={filtrarTarefa}>
                     <Feather name="search" size={30} color={tema.txt} />
                 </TouchableOpacity>
             </Container>
@@ -66,9 +71,8 @@ export default function Tarefas() {
                     tarefasDoDia.map(task => (
                         <CardTask
                             key={task}
-                            editar={() => alert('editar')}
                             tarefa={task}
-                            finalizar={() => alert('finalizar')}
+                            excluir={() => removerTarefa(task)}
                         />
                     ))
 
@@ -77,9 +81,8 @@ export default function Tarefas() {
                     tarefasFiltradas.map(task => (
                         <CardTask
                             key={task}
-                            editar={() => alert('editar')}
                             tarefa={task}
-                            finalizar={() => alert('finalizar')}
+                            excluir={() => removerTarefa(task)}
                         />
                     ))
 

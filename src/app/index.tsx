@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { router } from "expo-router";
 import * as Animacao from 'react-native-animatable';
 import { PagesStyles } from "@/styles/PageStyles";
