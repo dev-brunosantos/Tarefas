@@ -66,9 +66,7 @@ export default function Tarefas() {
                     tarefasDoDia.map(task => (
                         <CardTask
                             key={task}
-                            editar={() => alert('editar')}
                             tarefa={task}
-                            finalizar={() => alert('finalizar')}
                         />
                     ))
 
@@ -77,9 +75,7 @@ export default function Tarefas() {
                     tarefasFiltradas.map(task => (
                         <CardTask
                             key={task}
-                            editar={() => alert('editar')}
                             tarefa={task}
-                            finalizar={() => alert('finalizar')}
                         />
                     ))
 
