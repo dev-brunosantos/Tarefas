@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../config/axios";
 import { useApiContext } from "@/contexts/ApiContext";
 import { useTema } from "@/hooks/useTema";
+import { useModalContext } from "@/hooks/useModalContext";
 
 export default function Tarefas() {
 
@@ -32,6 +33,11 @@ export default function Tarefas() {
     useEffect(() => {
         setTarefasFiltradas(tarefasDoDia);
     }, [tarefasDoDia]);
+
+    const {
+        abrir, atualizar, finalizada,
+        openModal, closeModal, finished, update
+    } = useModalContext()
 
     return (
         <View style={[PagesStyles.page, { backgroundColor: tema.background }]}>
@@ -67,6 +73,11 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
+
+                            abrirModal={() => openModal()}
+                            fecharModal={() => closeModal()}
+                            atualizarTarefa={() => update()}
+                            finalizarTarefa={() => finished()}
                         />
                     ))
 
@@ -76,6 +87,11 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
+                            
+                            abrirModal={() => openModal()}
+                            fecharModal={() => closeModal()}
+                            atualizarTarefa={() => update()}
+                            finalizarTarefa={() => finished()}
                         />
                     ))
 

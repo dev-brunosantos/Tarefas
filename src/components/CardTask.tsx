@@ -9,9 +9,14 @@ import { useModalContext } from "@/hooks/useModalContext";
 
 interface TaskProps {
     tarefa: string;
+    abrirModal: () => void;
+    fecharModal: () => void;
+    atualizarTarefa: () => void;
+    finalizarTarefa: () => void;
 }
 
-export const CardTask = ({ tarefa }: TaskProps) => {
+// export const CardTask = ({ tarefa }: TaskProps) => {
+export const CardTask = ({ tarefa, abrirModal, fecharModal, atualizarTarefa, finalizarTarefa }: TaskProps) => {
 
     const { tema } = useTema()
     const {
@@ -28,8 +33,10 @@ export const CardTask = ({ tarefa }: TaskProps) => {
         }}>
             <TouchableOpacity 
                 style={{ flex: 1 }} 
-                onPress={() => openModal()} 
-                onLongPress={() => closeModal()}
+                // onPress={() => openModal()} 
+                // onLongPress={() => closeModal()}
+                onPress={abrirModal} 
+                onLongPress={finalizarTarefa}
             >
                 <View style={styles.content_txt} >
                     <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
@@ -39,11 +46,13 @@ export const CardTask = ({ tarefa }: TaskProps) => {
             </TouchableOpacity>
 
             <View style={styles.content_btn}>
-                <TouchableOpacity style={styles.btn} onPress={() => update()}>
+                {/* <TouchableOpacity style={styles.btn} onPress={() => update()}> */}
+                <TouchableOpacity style={styles.btn} onPress={atualizarTarefa}>
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => finished()}>
+                {/* <TouchableOpacity style={styles.btn} onPress={() => finished()}> */}
+                <TouchableOpacity style={styles.btn} onPress={finalizarTarefa}>
                     <Entypo name="check" size={35} color={tema.background} />
                 </TouchableOpacity>
             </View>
@@ -51,14 +60,16 @@ export const CardTask = ({ tarefa }: TaskProps) => {
             <ModalCardTask
                 key={tarefa}
                 isOpen={abrir}
-                close={() => closeModal()}
+                // close={() => closeModal()}
+                close={fecharModal}
                 tarefaTitulo={tarefa}
                 status={finalizada ? 'Concluída' : 'Pendente'}
             />
 
             <ModalFormTask
                 open={atualizar}
-                close={() => closeModal()}
+                // close={() => closeModal()}
+                close={fecharModal}
             />
         </Container>
     )
