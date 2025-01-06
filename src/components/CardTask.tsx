@@ -9,9 +9,10 @@ import { useState } from "react";
 
 interface TaskProps {
     tarefa: string;
+    excluir: (tarefa: string) => void;
 }
 
-export const CardTask = ({ tarefa }: TaskProps) => {
+export const CardTask = ({ tarefa, excluir }: TaskProps) => {
     const { tema } = useTema()
 
     const [abrir, setAbrir] = useState(false)
@@ -42,9 +43,9 @@ export const CardTask = ({ tarefa }: TaskProps) => {
             backgroundColor: finalizada ? Cores.confirmar : tema.txt,
             position: 'relative'
         }}>
-            <TouchableOpacity 
-                style={{ flex: 1 }} 
-                onPress={abrirModal} 
+            <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={abrirModal}
                 onLongPress={finalizarTarefa}
             >
                 <View style={styles.content_txt} >
@@ -59,7 +60,7 @@ export const CardTask = ({ tarefa }: TaskProps) => {
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={finalizarTarefa}>
+                <TouchableOpacity style={styles.btn} onPress={() => excluir(tarefa)}>
                     <Entypo name="trash" size={35} color={tema.background} />
                 </TouchableOpacity>
             </View>

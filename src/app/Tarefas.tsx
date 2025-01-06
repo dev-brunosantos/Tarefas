@@ -25,6 +25,10 @@ export default function Tarefas() {
         setTarefa('');
     }
 
+    const removerTarefa = (inforTarefa: string) => {
+        setTarefasDoDia((prevTarefas) => prevTarefas.filter(task => task !== inforTarefa))
+    }
+
     const filtrarTarefa = () => {
         const buscarTarefa = tarefasDoDia.filter(task => task.includes(tarefa));
         setTarefasFiltradas(buscarTarefa);
@@ -68,6 +72,7 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
+                            excluir={() => removerTarefa(task)}
                         />
                     ))
 
@@ -77,6 +82,7 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
+                            excluir={() => removerTarefa(task)}
                         />
                     ))
 
