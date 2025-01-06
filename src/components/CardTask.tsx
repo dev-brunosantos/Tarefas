@@ -2,8 +2,9 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { Container } from "./Container";
 import { useTema } from "@/hooks/useTema";
-import { ModalCardTask } from "./ModalCardTask";
+import { ModalCardTask } from "./Modal/ModalCardTask";
 import { useState } from "react";
+import { Cores } from "@/styles/Cores";
 
 interface TaskProps {
     tarefa: string;
@@ -16,6 +17,7 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
     const { tema } = useTema()
 
     const [abrir, setAbrir] = useState(false)
+    const [finalizada, setFinalizada] = useState(false)
 
     const teste = () => {
         setAbrir(true)
@@ -25,9 +27,18 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
         setAbrir(false)
     }
 
+    const consluirTarefa = () => {
+        setFinalizada(!finalizada)
+    }
+
     return (
-        <Container style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: tema.txt, position: 'relative' }}>
-            <TouchableOpacity style={{ flex: 1 }} onPress={teste}>
+        <Container style={{
+            flexDirection: 'row', alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: finalizada ? Cores.confirmar : tema.txt,
+            position: 'relative'
+        }}>
+            <TouchableOpacity style={{ flex: 1 }} onPress={teste} onLongPress={consluirTarefa}>
                 <View style={styles.content_txt} >
                     <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
                         {tarefa}
@@ -50,7 +61,7 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
                 isOpen={abrir}
                 close={fechar}
                 tarefaTitulo={tarefa}
-                status="Pendente"
+                status={finalizada ? 'Concluída' : 'Pendente'}
             />
         </Container>
     )
