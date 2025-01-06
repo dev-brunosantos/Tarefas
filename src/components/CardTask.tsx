@@ -3,10 +3,9 @@ import { Entypo } from '@expo/vector-icons';
 import { Container } from "./Container";
 import { useTema } from "@/hooks/useTema";
 import { ModalCardTask } from "./Modal/ModalCardTask";
-import { useState } from "react";
 import { Cores } from "@/styles/Cores";
 import { ModalFormTask } from "./Modal/ModalFormTask";
-import { ModalFunctionsProvider, useModalContext } from "@/contexts/ModalFunctions";
+import { useModalContext } from "@/hooks/useModalContext";
 
 interface TaskProps {
     tarefa: string;
@@ -17,35 +16,10 @@ interface TaskProps {
 export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
 
     const { tema } = useTema()
-
-    // const [abrir, setAbrir] = useState(false)
-    // const [finalizada, setFinalizada] = useState(false)
-
-    // const [atualizar, setAtualizar] = useState(false)
-
-    const { abrir, atualizar, finalizada, openModal, closeModal, finished, update } = useModalContext()
-
-    // const teste = () => {
-    //     setAbrir(true)
-    // }
-
-    // const fechar = () => {
-    //     setAbrir(false)
-    //     setAtualizar(false)
-    // }
-
-    // const consluirTarefa = () => {
-    //     setFinalizada(!finalizada)
-    // }
-
-    // const atualizarTarefa = () => {
-    //     setAtualizar(true)
-    // }
-
-    // const teste = () => {
-    //     setAbrir(true)
-    // }
-
+    const {
+        abrir, atualizar, finalizada,
+        openModal, closeModal, finished, update
+    } = useModalContext()
 
     const teste = () => {
         openModal()
@@ -79,7 +53,6 @@ export const CardTask = ({ tarefa, finalizar, editar }: TaskProps) => {
             </TouchableOpacity>
 
             <View style={styles.content_btn}>
-                {/* <TouchableOpacity style={styles.btn} onPress={editar}> */}
                 <TouchableOpacity style={styles.btn} onPress={atualizarTarefa}>
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
