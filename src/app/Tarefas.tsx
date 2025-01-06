@@ -34,11 +34,6 @@ export default function Tarefas() {
         setTarefasFiltradas(tarefasDoDia);
     }, [tarefasDoDia]);
 
-    const {
-        abrir, atualizar, finalizada,
-        openModal, closeModal, finished, update
-    } = useModalContext()
-
     return (
         <View style={[PagesStyles.page, { backgroundColor: tema.background }]}>
 
@@ -55,7 +50,7 @@ export default function Tarefas() {
                     placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
                 />
 
-                <TouchableOpacity onPress={() => filtrarTarefa()}>
+                <TouchableOpacity onPress={filtrarTarefa}>
                     <Feather name="search" size={30} color={tema.txt} />
                 </TouchableOpacity>
             </Container>
@@ -73,11 +68,6 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
-
-                            abrirModal={() => openModal()}
-                            fecharModal={() => closeModal()}
-                            atualizarTarefa={() => update()}
-                            finalizarTarefa={() => finished()}
                         />
                     ))
 
@@ -87,11 +77,6 @@ export default function Tarefas() {
                         <CardTask
                             key={task}
                             tarefa={task}
-                            
-                            abrirModal={() => openModal()}
-                            fecharModal={() => closeModal()}
-                            atualizarTarefa={() => update()}
-                            finalizarTarefa={() => finished()}
                         />
                     ))
 
