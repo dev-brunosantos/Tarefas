@@ -38,7 +38,7 @@ export default function Tarefas() {
 
             <Container style={{
                 width: '112%', position: 'absolute',
-                top: 0, left: 10, right: 0,
+                top: 10, left: 10, right: 0,
                 flexDirection: 'row', paddingHorizontal: 20,
                 borderColor: tema.txt
             }}>
@@ -54,7 +54,7 @@ export default function Tarefas() {
                 </TouchableOpacity>
             </Container>
 
-            <Container style={{ height: 100, borderWidth: 0, marginTop: 20 }}>
+            <Container style={{ height: 100, borderWidth: 0, marginTop: 40 }}>
                 <Text style={{ fontSize: 45, color: tema.txt }}>
                     Minhas Tarefas
                 </Text>
