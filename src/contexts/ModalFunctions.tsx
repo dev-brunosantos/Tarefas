@@ -45,10 +45,4 @@ const ModalFunctionsProvider = ({ children }: { children: ReactNode }) => {
     )
 }
 
-// const useModalContext = () => {
-//     const contexto = useContext(ModalFunctionsContext)
-//     if(!contexto) throw new Error("Não existe nenhum contexto de Modal")
-//     return contexto
-// }
-
 export { ModalFunctionsContext, ModalFunctionsProvider }

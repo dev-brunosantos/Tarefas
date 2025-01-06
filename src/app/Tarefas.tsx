@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../config/axios";
 import { useApiContext } from "@/contexts/ApiContext";
 import { useTema } from "@/hooks/useTema";
+import { useModalContext } from "@/hooks/useModalContext";
 
 export default function Tarefas() {
 
@@ -49,7 +50,7 @@ export default function Tarefas() {
                     placeholderTextColor={tema.txt === '#eaeaea' ? '#888' : '#555'}
                 />
 
-                <TouchableOpacity onPress={() => filtrarTarefa()}>
+                <TouchableOpacity onPress={filtrarTarefa}>
                     <Feather name="search" size={30} color={tema.txt} />
                 </TouchableOpacity>
             </Container>

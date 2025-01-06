@@ -6,18 +6,41 @@ import { ModalCardTask } from "./Modal/ModalCardTask";
 import { Cores } from "@/styles/Cores";
 import { ModalFormTask } from "./Modal/ModalFormTask";
 import { useModalContext } from "@/hooks/useModalContext";
+import { useState } from "react";
 
 interface TaskProps {
     tarefa: string;
+    // abrirModal: () => void;
+    // fecharModal: () => void;
+    // atualizarTarefa: () => void;
+    // finalizarTarefa: () => void;
 }
 
 export const CardTask = ({ tarefa }: TaskProps) => {
+// export const CardTask = ({ tarefa, abrirModal, fecharModal, atualizarTarefa, finalizarTarefa }: TaskProps) => {
 
     const { tema } = useTema()
-    const {
-        abrir, atualizar, finalizada,
-        openModal, closeModal, finished, update
-    } = useModalContext()
+
+    const [abrir, setAbrir] = useState(false)
+    const [atualizar, setAtualizar] = useState(false)
+    const [finalizada, setFinalizada] = useState(false)
+
+    const abrirModal = () => {
+        setAbrir(true)
+    }
+
+    const atualizarTarefa = () => {
+        setAtualizar(!atualizar)
+    }
+
+    const finalizarTarefa = () => {
+        setFinalizada(!finalizada)
+    }
+
+    const fecharModal = () => {
+        setAbrir(false)
+        setAtualizar(false)
+    }
 
     return (
         <Container style={{
@@ -28,8 +51,10 @@ export const CardTask = ({ tarefa }: TaskProps) => {
         }}>
             <TouchableOpacity 
                 style={{ flex: 1 }} 
-                onPress={() => openModal()} 
-                onLongPress={() => closeModal()}
+                // onPress={() => openModal()} 
+                // onLongPress={() => closeModal()}
+                onPress={abrirModal} 
+                onLongPress={finalizarTarefa}
             >
                 <View style={styles.content_txt} >
                     <Text style={{ fontSize: 18, fontWeight: '500', fontStyle: 'italic', color: tema.background }}>
@@ -39,26 +64,30 @@ export const CardTask = ({ tarefa }: TaskProps) => {
             </TouchableOpacity>
 
             <View style={styles.content_btn}>
-                <TouchableOpacity style={styles.btn} onPress={() => update()}>
+                {/* <TouchableOpacity style={styles.btn} onPress={() => update()}> */}
+                <TouchableOpacity style={styles.btn} onPress={atualizarTarefa}>
                     <Entypo name="pencil" size={35} color={tema.background} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btn} onPress={() => finished()}>
-                    <Entypo name="check" size={35} color={tema.background} />
+                {/* <TouchableOpacity style={styles.btn} onPress={() => finished()}> */}
+                <TouchableOpacity style={styles.btn} onPress={finalizarTarefa}>
+                    <Entypo name="trash" size={35} color={tema.background} />
                 </TouchableOpacity>
             </View>
 
             <ModalCardTask
                 key={tarefa}
                 isOpen={abrir}
-                close={() => closeModal()}
+                // close={() => closeModal()}
+                close={fecharModal}
                 tarefaTitulo={tarefa}
                 status={finalizada ? 'Concluída' : 'Pendente'}
             />
 
             <ModalFormTask
                 open={atualizar}
-                close={() => closeModal()}
+                // close={() => closeModal()}
+                close={fecharModal}
             />
         </Container>
     )
